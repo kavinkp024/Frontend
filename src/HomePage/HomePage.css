@@ -1,0 +1,201 @@
+.sidebar {
+    background-color: blueviolet;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 150%;
+    position: fixed;
+    overflow: auto;
+}
+
+.homepage {
+    height: 100%;
+    width: 100%;
+
+}
+
+.nav-side{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 100px;
+}
+
+.button-home {
+    background-color: blueviolet;
+}
+
+.title-top {
+    background-color: slateblue;
+    width: 1300px;
+    height: 50px;
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-right: 0%;
+}
+
+.profile {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 650px;
+    padding-right: 50px;
+    display: block;
+    align-items: center;
+    margin: auto;
+}
+
+.fc-name {
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.table-style {
+    width: 1235px;
+    padding-left: 35px;
+    background-color: aliceblue;
+
+}
+
+.input-style {
+    width: 10%;
+    padding: 5px;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 130px;
+    width: 5%;
+    border: 1px solid #8AC007;
+}
+
+th,
+td {
+    border: 3px solid white;
+}
+
+.data-style {
+    display: center;
+    align-items: center;
+}
+
+
+.button-style {
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 15px;
+    padding-left: 500px;
+}
+
+.button-color {
+    color: black;
+    background-color: blueviolet;
+    border-radius: 20px;
+}
+
+.font {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 35px;
+}
+
+.key:hover {
+    background-color: rgb(173, 136, 122);
+}
+
+.delete {
+    background-color: brown;
+}
+
+.update {
+    background-color: darkgreen;
+}
+
+.tag-pill {
+    padding: 3px 5px;
+    margin: 2px;
+    border-radius: 12px;
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 15px;
+}
+
+.update-form {
+    display: block;
+    padding-left: 500px;
+    padding-right: 400px;
+    padding-top: 200px;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 58px;
+    background-color: darkkhaki;
+}
+
+.update-text-1 {
+    width: 90%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.update-text-2 {
+    width: 80%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.update-text-3 {
+    width: 80%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.update-text-4 {
+    width: 80%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.update-text-5 {
+    width: 80%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.update-text-6 {
+    width: 80%;
+    padding: 10px;
+    color: black;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.sidebar-d1 {
+    display: block;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.span-bar {
+    margin-left: 0px;
+}

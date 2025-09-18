@@ -1,0 +1,30 @@
+.login {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+}
+
+ .from-login {
+    border-radius: 0px;
+    background-color: burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 30px;
+} 
+
+ .text {
+    border-radius: 50px;
+}
+
+.button {
+    color: blue;
+     display: flex;
+    align-items: center;
+} 
