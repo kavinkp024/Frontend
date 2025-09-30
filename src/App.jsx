@@ -14,7 +14,6 @@ function App() {
     <main>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<button>enter</button>} />
           <Route path="/user" element={<RegisterForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/task/list" element={<HomePage />} />

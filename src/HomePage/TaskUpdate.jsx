@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const TaskUpdate = () => {
@@ -10,6 +11,8 @@ const TaskUpdate = () => {
     const [formData, setFormData] = useState({ title: '', description: '', due_date: '', priority: '', status: '', tags: '' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate(); 
+    
 
     useEffect(() => {
         const fetchTask = async () => {
@@ -58,6 +61,7 @@ const TaskUpdate = () => {
             const updatedTask = await response.json();
             setTask(updatedTask);
             setEditing(false);
+            navigate('/task/list');
         } catch (err) {
             setError(err.message);
         } finally {
@@ -72,9 +76,9 @@ const TaskUpdate = () => {
         <div>
             {editing ? (
                 <form className='update-form' onSubmit={handleSubmit}>
-                    <h2>Update Task!</h2>
+                    <h2 className='title'>Update Task!</h2>
                     <div>
-                        <lable>Title:</lable>
+                        <label>Title</label>
                         <input
                             type="text"
                             name="title"
@@ -83,7 +87,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div>
-                        <lable>Description:</lable>
+                        <label>Description</label>
                         <input type="text"
                             name="description"
                             className='update-text-2'
@@ -91,7 +95,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <lable>Due-Date:</lable>
+                        <label>Due-Date</label>
                         <input
                             type="text"
                             name="due_date"
@@ -100,7 +104,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div>
-                        <lable>Priority:</lable>
+                        <label>Priority</label>
                         <input
                             type="text"
                             name="Priority"
@@ -109,7 +113,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <lable>status:</lable>
+                        <label>Status</label>
                         <input
                             type="text"
                             name="status"
@@ -118,7 +122,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <lable>Tags:</lable>
+                        <label>Tags:</label>
                         <input
                             type="text"
                             name="tags"
@@ -126,18 +130,20 @@ const TaskUpdate = () => {
                             value={formData.tags}
                             onChange={handleChange} />
                     </div>
-                    <button className='button-style' type="submit">Save Changes</button>
-                    <button className='button-style' type="button" onClick={() => setEditing(false)}>Cancel</button>
+                    <div className='task-button'>
+                        <button className='button-update' type="submit">Save</button>
+                        <button className='button-update' type="button" onClick={() => setEditing(false)}>Cancel</button>
+                    </div>
                 </form>
             ) : (
-                <div className='update-form'>
-                    <p><strong>title:</strong> {task.title}</p>
-                    <p><strong>description:</strong> {task.description}</p>
-                    <p><strong>due_date:</strong> {task.due_date}</p>
-                    <p><strong>status:</strong> {task.status}</p>
-                    <p><strong>priority:</strong> {task.priority}</p>
-                    <p><strong>tags:</strong> {task.tags}</p>
-                    <button className='button' onClick={() => setEditing(true)}>Edit</button>
+                <div className='task-edit'>
+                    <p><strong>Title:</strong> {task.title}</p>
+                    <p><strong>Description:</strong> {task.description}</p>
+                    <p><strong>Due_date:</strong> {task.due_date}</p>
+                    <p><strong>Status:</strong> {task.status}</p>
+                    <p><strong>Priority:</strong> {task.priority}</p>
+                    <p><strong>Tags:</strong> {task.tags}</p>
+                    <button className='button-update' onClick={() => setEditing(true)}>Edit</button>
                 </div>
             )}
         </div>

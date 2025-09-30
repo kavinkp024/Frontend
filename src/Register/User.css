@@ -9,7 +9,7 @@
 
 .title {
     text-align: center;
-    color: #333;
+    color: #6f6542;
 }
 
 .from {
@@ -24,15 +24,24 @@
     color: black;
     border-radius: 6px;
     box-sizing: border-box;
+    border: 1px solid #ccc;
 }
 
 .button {
-    background-color:darkslateblue;
+    background-color: darkslateblue;
     color: white;
-    padding: 5px 15px;
+    padding: 5px 25px;
     border-radius: 10px;
     display: block;
     margin: auto;
     cursor: pointer;
     font-size: 16px;
+}
+
+.hidden-password {
+    position: absolute;
+    right:510px;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }

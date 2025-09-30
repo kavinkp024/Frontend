@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function TaskForm() {
     const [title, settitle] = useState('');
@@ -9,92 +11,160 @@ function TaskForm() {
     const [tagsInput, setTagsInput] = useState('');
     const [userId, setuserId] = useState('');
     const [message, setMessage] = useState('');
+    const [titleError, settitleerror] = useState('');
+    const [due_dateError, setdue_dateerror] = useState('');
+    const [priorityError, setpriorityerror] = useState(''); 
+    const [statusError, setstatuserror] = useState('');
+    const [tagsError, settagserror] = useState('');
+    const [useridError, setuseriderror] = useState('');
+    const navigate = useNavigate(); 
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         const parsedTags = tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
 
-        try {
-            const response = await fetch('http://localhost:3001/tasks', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ title, description, due_date, status, priority, tags: parsedTags, userId }),
-            });
-            const data = await response.json();
-            if (data.success) {
-                setMessage(data.message);
+        const validateForm = () => {
+            let isValid = true;
+
+            if (!title.trim()) {
+                settitleerror('Title is required.');
+                isValid = false;
             } else {
-                setMessage(data.message || 'Task failed.');
+                settitleerror('');
             }
-        } catch (error) {
-            console.error('Error during creating task:', error);
-            setMessage('An error occurred. Please try again.');
+
+            if (!due_date.trim()) {
+                setdue_dateerror('Due_Date is required.');
+                isValid = false;
+            } else {
+                setdue_dateerror('');
+            }
+
+            if (!priority.trim()) {
+                setpriorityerror('Priority is required.');
+                isValid = false;
+            } else {
+                setpriorityerror('');
+            }
+
+            if (!status.trim()) {
+                setstatuserror('Status is required.');
+                isValid = false;
+            } else {
+                setstatuserror('');
+            }
+
+            if (!tagsInput.trim()) {
+                settagserror('Tags is required.');
+                isValid = false;
+            } else {
+                settagserror('');
+            }
+
+            if (!userId.trim()) {
+                setuseriderror('UserId is required.');
+                isValid = false;
+            } else {
+                setuseriderror('');
+            }
+            return isValid;
+        };
+
+        if (validateForm()) {
+            try {
+                const response = await fetch(`http://localhost:3001/tasks`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ title, description, due_date, status, priority, tags: parsedTags, userId }),
+                });
+                const data = await response.json();
+                console.log(data.message)
+                if (data.success) {
+                    setMessage(data.message);
+                    navigate('/task/list');
+                } if (data.message) {
+                    setMessage(data.message)
+                }
+                else {
+                    setMessage('Task failed.');
+                }
+            } catch (error) {
+                console.error('Error during creating task:', error);
+                setMessage('An error occurred. Please try again.');
+            }
+        }
+        else {
+            console.log('Form has errors.');
         }
     };
 
     return (
-        <div className="update-form">
+        <div className="task-form">
             <h1 className="title">Task!</h1>
             <form onSubmit={handleSubmit}>
-                <div className="from">
-                    <input type="text"
-                        value={title}
-                        placeholder="Title"
-                        className="update-text-1"
-                        onChange={(event) => settitle(event.target.value)} />
-                </div>
-                <div className="from">
-                    <input type="text"
-                        value={description}
-                        placeholder="Description"
-                        className="update-text-1"
-                        onChange={(event) => setdescription(event.target.value)} />
-                </div>
-                <div className="from">
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Title*</label>
+                <input type="text"
+                    value={title}
+                    className='input-task'
+                    placeholder="Enter your title"
+                    onChange={(event) => settitle(event.target.value)} />
+                {titleError && <p style={{ color: 'red' }}>{titleError}</p>}
+                <label style={{ fontSize: '21px', color: 'blue',fontFamily: 'Brush Script MT' }}>Description</label>
+                <input type="text"
+                    value={description}
+                    className='input-task'
+                    placeholder="Enter your description"
+                    onChange={(event) => setdescription(event.target.value)} />
+                <label style={{ fontSize: '21px', color: 'blue',fontFamily: 'Brush Script MT'}}>Due_Date*</label>
+                <input
+                    type="text"
+                    placeholder="Enter your due_date"
+                    className='input-task'
+                    value={due_date}
+                    onChange={(event) => setdue_date(event.target.value)} />
+                {due_dateError && <p style={{ color: 'red' }}>{due_dateError}</p>}
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Priority*</label>
+                <input
+                    type="text"
+                    placeholder="Enter your priority"
+                    value={priority}
+                    className='input-task'
+                    onChange={(event) => setpriority(event.target.value)} />
+                {priorityError && <p style={{ color: 'red' }}>{priorityError}</p>}
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Status*</label>
+                <input
+                    type="text"
+                    placeholder="Enter your status"
+                    value={status}
+                    className='input-task'
+                    onChange={(event) => setstatus(event.target.value)} />
+                {statusError && <p style={{ color: 'red' }}>{statusError}</p>}
+                <span>
+                    <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT',}}>Tags*</label>
                     <input
                         type="text"
-                        placeholder="Due_Date"
-                        className="update-text-1"
-                        value={due_date}
-                        onChange={(event) => setdue_date(event.target.value)} required />
-                </div>
-                <div className="from">
-                    <input
-                        type="text"
-                        placeholder="Priority"
-                        className="update-text-1"
-                        value={priority}
-                        onChange={(event) => setpriority(event.target.value)} required />
-                </div>
-                <div className="from">
-                    <input
-                        type="text"
-                        placeholder="Status"
-                        className="update-text-1"
-                        value={status}
-                        onChange={(event) => setstatus(event.target.value)} required />
-                </div>
-                <div className="from">
-                    <input
-                        type="text"
-                        placeholder="Tags"
-                        className="update-text-1"
+                        placeholder="Enter your tags"
                         value={tagsInput}
-                        onChange={(event) => setTagsInput(event.target.value)} required />
+                        className='input-task'
+                        onChange={(event) => setTagsInput(event.target.value)} />
+                    {tagsError && <p style={{ color: 'red' }}>{tagsError}</p>}
+                </span>
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>UserId*</label>
+                <input
+                    type="text"
+                    placeholder="Enter your UserId"
+                    value={userId}
+                    className='input-task'
+                    onChange={(event) => setuserId(event.target.value)} />
+                {useridError && <p style={{ color: 'red' }}>{useridError}</p>}
+                <div className='task-submit'>
+                    <button type="submit" className='button-task'>Submit</button>
+                    {message && <p>{message}</p>}
                 </div>
-                <div className="from">
-                    <input
-                        type="text"
-                        placeholder="UserId"
-                        className="update-text-1"
-                        value={userId}
-                        onChange={(event) => setuserId(event.target.value)} required />
-                </div>
-                <button type="submit" className='button'>Submit</button>
-                {message && <p>{message}</p>}
             </form>
         </div>
     );
