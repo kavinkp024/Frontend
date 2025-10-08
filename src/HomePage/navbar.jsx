@@ -1,25 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; 
+import { useState } from 'react';
+import { CgProfile} from "react-icons/cg";
 
-const VerticalNavbar = () => {
+export default function Profile() {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
-    <nav className="vertical-navbar">
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/services">Services</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
+    <nav>
+      <button onClick={() => setIsExpanded(!isExpanded)}>
+        <CgProfile size={25} />
+      </button>
+      {isExpanded && (
+        <ul>
+         <li >
+          <p>Well Come User!</p>
+         </li>
+        </ul>
+      )}
     </nav>
   );
 };
 
-export default VerticalNavbar;
+

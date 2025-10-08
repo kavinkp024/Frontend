@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './User.css';
 
 function RegisterForm() {
@@ -12,12 +12,8 @@ function RegisterForm() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [phoneError, setPhoneError] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); 
 
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   const validateForm = () => {
     let isValid = true;
@@ -70,6 +66,7 @@ function RegisterForm() {
         const data = await response.json();
         if (data.success) {
           setMessage(data.message);
+          navigate('/login');
         } else {
           setMessage(data.message || 'Registration failed.');
         }
@@ -84,64 +81,53 @@ function RegisterForm() {
   };
 
   return (
-      <div className="user-Container">
-        <h1 className="title">USER!</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="from">
-            <label>Name*</label>
-            <input
-              type="text"
-              value={name}
-              placeholder="Enter your name"
-              className="text-input"
-              onChange={(event) => setname(event.target.value)} />
-            {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
-          </div>
-          <div className="from">
-            <label>Email*</label>
-            <input type="email"
-              value={email}
-              placeholder="Enter your email"
-              className="text-input"
-              onChange={(event) => setEmail(event.target.value)} />
-            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
-          </div>
-          <div className="from">
-            <label>Password*</label>
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Enter your password"
-              value={password}
-              className="text-input"
-              onChange={(event) => setPassword(event.target.value)} required />
-            <span
-              onClick={togglePasswordVisibility}
-              style={{
-                position: 'absolute',
-                right: '510px',
-                top: '58%',
-                transform: 'translateY(-50%)',
-                cursor: 'pointer',
-              }}
-            >
-              {showPassword ? <FaEye /> : <FaEyeSlash />}
-            </span>
-            {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
-          </div>
-          <div className="from">
-            <label>Phone*</label>
-            <input
-              type="text"
-              placeholder="Enter your number"
-              value={phone}
-              className="text-input"
-              onChange={(event) => setPhone(event.target.value)} required />
-            {phoneError && <p style={{ color: 'red' }}>{phoneError}</p>}
-          </div>
+    <div className="user-Container">
+      <h1 className="title">USER!</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="from">
+          <label>Name*</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Enter your name"
+            className="text-input"
+            onChange={(event) => setname(event.target.value)} />
+          {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
+        </div>
+        <div className="from">
+          <label>Email*</label>
+          <input
+            type="email"
+            value={email}
+            placeholder="Enter your email"
+            className="text-input"
+            onChange={(event) => setEmail(event.target.value)} />
+          {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+        </div>
+        <div className="from">
+          <label>Password*</label>
+          <input
+            type='text'
+            placeholder="Enter your password"
+            value={password}
+            className="text-input"
+            onChange={(event) => setPassword(event.target.value)} />
+          {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+        </div>
+        <div className="from">
+          <label>Phone*</label>
+          <input
+            type="text"
+            placeholder="Enter your number"
+            value={phone}
+            className="text-input"
+            onChange={(event) => setPhone(event.target.value)} />
+          {phoneError && <p style={{ color: 'red' }}>{phoneError}</p>}
+        </div>
           <button type="submit" className='button'>Sign Up</button>
-          {message && <p>{message}</p>}
-        </form>
-      </div>
+        {message && <p>{message}</p>}
+      </form>
+    </div>
   );
 }
 

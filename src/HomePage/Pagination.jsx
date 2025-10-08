@@ -4,7 +4,7 @@ const Pagination = ({ total, currentPage, onPageChange }) => {
   const pageNumbers = Array.from({ length: total }, (_, i) => i + 1);
 
   return (
-    <div className='button-style' >
+    <div className='button-style'>
       <button className='button-color' onClick={() => onPageChange(currentPage - 1)} disabled={currentPage === 1}>
         Previous
       </button>
@@ -12,7 +12,7 @@ const Pagination = ({ total, currentPage, onPageChange }) => {
         <button 
           key={pageNumber}
           onClick={() => onPageChange(pageNumber)}
-          className={pageNumber === currentPage ? 'active' : ''}
+          className={pageNumber === currentPage ? 'active button-num' : 'button-num'}
         >
           {pageNumber}
         </button>
