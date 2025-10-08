@@ -1,0 +1,108 @@
+.profile-edit {
+    max-width: 400px;
+    max-height: 900px;
+    margin: 50px auto;
+    padding: 50px;
+    border-radius: 38px;
+    background-color: rgb(255, 255, 255);
+    font-size: 21;
+    font-style: italic;
+}
+
+.update-Profile{
+    margin-bottom: 1px;
+    padding: 5px;
+    border-radius: 800px;
+    font-style: italic;
+    background-color: white;
+    max-width: 350px;
+    margin: 50px auto;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 48px;
+}
+
+.title-profile{
+    text-align: center;
+    color: #0f22b1;
+    font-size: 24;
+    font-style: italic;
+}
+
+.update-input-1 {
+    width: 90%;
+    padding: 4px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 17px;
+    columns: 10px;
+    font-style: italic;
+}
+
+.update-input-2 {
+    width: 90%;
+    padding: 4px;
+    color: black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+    columns: 10px;
+    border: 1px solid #ccc;
+    font-style: italic;
+}
+
+.update-input-3 {
+    width: 90%;
+    padding: 4px;
+    color: rgb(2, 2, 2);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+    columns: 10px;
+    border: 1px solid #ccc;
+    font-style: italic;
+}
+
+.update-input-4 {
+    width: 90%;
+    padding: 4px;
+    color: black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+    columns: 10px;
+    border: 1px solid #ccc;
+    font-style: italic;
+}
+
+.button-click {
+    background-color: rgb(56, 51, 94);
+    color: white;
+    padding: 7px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.profile-button {
+    display: flex;
+    align-items: end;
+    padding-top: 13px;
+    padding-left: 50px;
+    font-style: italic;
+}
+
+.button-onclick {
+    margin-top: 10px;
+    margin-left: 100px;
+    background-color: rgb(56, 51, 94);
+    color: white;
+    padding: 7px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: italic;
+}

@@ -1,98 +1,13 @@
-.homepage {
-    height: 100%;
-    width: 100%;
-
-}
-
-.title-top {
-    background-color: rgb(186, 186, 187);
-    width: 1300px;
-    height: 50px;
-    display: flex;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-right: 0%;
-}
-
-.profile {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 650px;
-    padding-right: 50px;
-    display: block;
-    align-items: center;
-    margin: auto;
-}
-
-.fc-name {
-    display: flex;
-    align-items: center;
-    margin: auto;
-}
-
-
-
-.input-style {
-    width: 10%;
-    padding: 5px;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    position: sticky;
-    top: 130px;
-    width: 5%;
-    border: 1px solid #8AC007;
-}
-
-
-.data-style {
-    display: center;
-    align-items: center;
-}
-
-
-.button-style {
-    display: flex;
-    align-items: center;
-    padding-left: 500px;
-    padding-top: 20px;
-}
-
-.button-color {
-    width: 90px;
-    background-color: rgb(88, 83, 116);
-    color: white;
-    padding: 1px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.button-num:hover {
-    background-color: rgb(128, 150, 222);
-    padding: 1px 5px;
-    cursor: pointer;
-}
-
-.font {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    padding-left: 35px;
+.home {
+     padding: 200px 350px;
+     display: block;
+     font-size: 30;
+     font-style: italic;
 }
 
 .key:hover {
-    background-color: rgb(109, 105, 104);
+    background-color: rgb(157, 102, 88);
 }
-
-.delete {
-    background-color:indianred;
-}
-
-.update {
-    background-color:cadetblue;
-}
-
 
 .tag-pill {
     padding: 3px 5px;
@@ -101,124 +16,12 @@
     background-color: #e0e0e0;
     color: #333;
     font-size: 15px;
+    font-style: italic;
 }
 
-.update-form {
-    max-width: 400px;
-    max-height: 1000px;
-    margin: 50px auto;
-    padding: 40px;
-    border-radius: 38px;
-    background-color: rgb(255, 255, 255);
-    font-size: 20;
-    color: rgb(122, 122, 231);
-}
-
-.task-edit {
-    max-width: 500px;
-    max-height: 900px;
-    margin: 50px auto;
-    padding: 50px;
-    border-radius: 38px;
-    background-color: rgb(255, 255, 255);
-    font-size: 21;
-}
-
-
-.update-text-1 {
-    width: 90%;
-    padding: 4px;
-    color: black;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-}
-
-.update-text-2 {
-    width: 90%;
-    padding: 4px;
-    color: black;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-    border: 1px solid #ccc;
-}
-
-.update-text-3 {
-    width: 90%;
-    padding: 4px;
-    color: rgb(2, 2, 2);
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-    border: 1px solid #ccc;
-}
-
-.update-text-4 {
-    width: 90%;
-    padding: 4px;
-    color: black;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-    border: 1px solid #ccc;
-}
-
-.update-text-5 {
-    width: 90%;
-    padding: 4px;
-    color: black;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-    border: 1px solid #ccc;
-}
-
-.update-text-6 {
-    width: 90%;
-    padding: 4px;
-    color: black;
-    border-radius: 10px;
-    box-sizing: border-box;
-    font-size: 17px;
-    columns: 10px;
-    border: 1px solid #ccc;
-}
-
-.button-home {
-    background-color: rgb(102, 90, 44);
-}
-
-.nav-side {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 5px;
-    padding: 8px 11px;
-    padding-right: 5px;
-}
-
-.sidebar {
-    background-color: rgb(102, 90, 44);
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 46px;
-    height: 150%;
-    position: fixed;
-    overflow: auto;
-}
-
-.sidebar-d1 {
-    display: block;
-    color:rgb(0, 0, 0);
-    padding: 7px 5px;
-    text-decoration: none;
+.profile {
+    margin-left: 1040px;
+    margin-top: 15px;
 }
 
 .span-bar {
@@ -232,23 +35,27 @@
 .search-name {
     padding-left: 20px;
     font-size: 20px;
+    font-style: italic;
 }
 
 .searchdate {
     padding-left: 45px;
-
+font-style: italic;
 }
 
 .searchstatus {
     padding-left: 45px;
+    font-style: italic;
 }
 
 .searchpriority {
     padding-left: 45px;
+    font-style: italic;
 }
 
 .searchbar {
     padding-left: 45px;
+    font-style: italic;
 }
 
 .task-form {
@@ -258,6 +65,7 @@
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 58px;
+    font-style: italic;
 }
 
 .input-task {
@@ -267,6 +75,7 @@
     box-sizing: border-box;
     font-size: 16px;
     color: black;
+    font-style: italic;
 }
 
 .button-task {
@@ -279,32 +88,36 @@
     margin: auto;
     cursor: pointer;
     font-size: 16px;
+    font-style: italic;
 }
 
 .task-submit {
     padding-top: 10%;
 }
 
-.table{
-    width:100%;
-    height:100%;
+.table {
+    width: 0%;
+    height: 100%;
+    font-style: italic;
 }
 
 th {
-  height: 70px;
+    height: 70px;
 }
 
 td {
-  text-align: center;
+    text-align: center;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.action{
+.action {
     padding-left: 20px;
+    font-style: italic;
 }
+
 .button-update {
     background-color: rgb(56, 51, 94);
     color: white;
@@ -312,6 +125,7 @@ tr:nth-child(even) {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
+    font-style: italic;
 }
 
 .task-button {
@@ -319,5 +133,5 @@ tr:nth-child(even) {
     align-items: end;
     padding-top: 10px;
     padding-left: 100px;
+    font-style: italic;
 }
-

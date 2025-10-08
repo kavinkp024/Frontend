@@ -1,0 +1,43 @@
+.sidebar {
+    background-color:rgb(195, 158, 229);
+    list-style-type: none;
+    width: 140px;
+    height: 150%;
+    position: fixed;
+    overflow: auto;
+    cursor: pointer;
+    font-style: italic;
+}
+
+.fc-name {
+    display:block;
+    margin-right:0%;
+    margin-bottom: 0%;
+    padding-left:25px;
+    padding-top: 20px;
+    font-style: italic;
+    font-size: 15px;
+    background-color:rgb(134, 39, 223);
+}
+
+.sidebar-d1 {
+    display: block;
+    margin: auto;
+    color: rgb(0, 0, 0);
+    padding: 10px 5px;
+    text-decoration: none;
+    padding-right: 70%;
+    font-style: italic;
+}
+
+.sidebar-d1:hover {
+    background-color:azure;
+    display: flex;
+}
+
+.side-but{
+    display: flex;
+    align-items: center;
+    font-size: 22;
+    padding-left: 10px;
+}

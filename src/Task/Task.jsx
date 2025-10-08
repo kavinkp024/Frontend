@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Task.css';
 
 
 function TaskForm() {
@@ -82,7 +83,6 @@ function TaskForm() {
                     body: JSON.stringify({ title, description, due_date, status, priority, tags: parsedTags, userId }),
                 });
                 const data = await response.json();
-                console.log(data.message)
                 if (data.success) {
                     setMessage(data.message);
                     navigate('/task/list');
@@ -106,7 +106,7 @@ function TaskForm() {
         <div className="task-form">
             <h1 className="title">Task!</h1>
             <form onSubmit={handleSubmit}>
-                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Title*</label>
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Title<span style={{ color: 'red'}}>*</span></label>
                 <input type="text"
                     value={title}
                     className='input-task'
@@ -119,7 +119,7 @@ function TaskForm() {
                     className='input-task'
                     placeholder="Enter your description"
                     onChange={(event) => setdescription(event.target.value)} />
-                <label style={{ fontSize: '21px', color: 'blue',fontFamily: 'Brush Script MT'}}>Due_Date*</label>
+                <label style={{ fontSize: '21px', color: 'blue',fontFamily: 'Brush Script MT'}}>Due_Date<span style={{ color: 'red'}}>*</span></label>
                 <input
                     type="text"
                     placeholder="Enter your due_date"
@@ -127,7 +127,7 @@ function TaskForm() {
                     value={due_date}
                     onChange={(event) => setdue_date(event.target.value)} />
                 {due_dateError && <p style={{ color: 'red' }}>{due_dateError}</p>}
-                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Priority*</label>
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Priority<span style={{ color: 'red'}}>*</span></label>
                 <input
                     type="text"
                     placeholder="Enter your priority"
@@ -135,7 +135,7 @@ function TaskForm() {
                     className='input-task'
                     onChange={(event) => setpriority(event.target.value)} />
                 {priorityError && <p style={{ color: 'red' }}>{priorityError}</p>}
-                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Status*</label>
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Status<span style={{ color: 'red'}}>*</span></label>
                 <input
                     type="text"
                     placeholder="Enter your status"
@@ -144,7 +144,7 @@ function TaskForm() {
                     onChange={(event) => setstatus(event.target.value)} />
                 {statusError && <p style={{ color: 'red' }}>{statusError}</p>}
                 <span>
-                    <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT',}}>Tags*</label>
+                    <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT',}}>Tags<span style={{ color: 'red'}}>*</span></label>
                     <input
                         type="text"
                         placeholder="Enter your tags"
@@ -153,7 +153,7 @@ function TaskForm() {
                         onChange={(event) => setTagsInput(event.target.value)} />
                     {tagsError && <p style={{ color: 'red' }}>{tagsError}</p>}
                 </span>
-                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>UserId*</label>
+                <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>UserId<span style={{ color: 'red'}}>*</span></label>
                 <input
                     type="text"
                     placeholder="Enter your UserId"
