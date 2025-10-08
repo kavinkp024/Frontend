@@ -82,50 +82,50 @@ function RegisterForm() {
 
   return (
     <div className="user-Container">
-      <h1 className="title">USER!</h1>
+      <h1 className="user-title">USER!</h1>
       <form onSubmit={handleSubmit}>
-        <div className="from">
-          <label>Name*</label>
+        <div className="user-from">
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Name<span style={{ color: 'red'}}>*</span></label>
           <input
             type="text"
             value={name}
             placeholder="Enter your name"
-            className="text-input"
+            className="user-input"
             onChange={(event) => setname(event.target.value)} />
-          {nameError && <p style={{ color: 'red' }}>{nameError}</p>}
+          {nameError && <p style={{ color: 'red',fontStyle:'italic'}}>{nameError}</p>}
         </div>
-        <div className="from">
-          <label>Email*</label>
+        <div className="user-from">
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Email<span style={{ color: 'red' }}>*</span></label>
           <input
             type="email"
             value={email}
             placeholder="Enter your email"
-            className="text-input"
+            className="user-input"
             onChange={(event) => setEmail(event.target.value)} />
-          {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
+          {emailError && <p style={{ color: 'red',fontStyle:'italic'}}>{emailError}</p>}
+          {message && <p style={{ color: 'red',fontStyle:'italic'}}>{message}</p>}
         </div>
-        <div className="from">
-          <label>Password*</label>
+        <div className="user-from">
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Password<span style={{ color: 'red' }}>*</span></label>
           <input
             type='text'
             placeholder="Enter your password"
             value={password}
-            className="text-input"
+            className="user-input"
             onChange={(event) => setPassword(event.target.value)} />
-          {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
+          {passwordError && <p style={{ color: 'red',fontStyle:'italic' }}>{passwordError}</p>}
         </div>
-        <div className="from">
-          <label>Phone*</label>
+        <div className="user-from">
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Phone <span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             placeholder="Enter your number"
             value={phone}
-            className="text-input"
+            className="user-input"
             onChange={(event) => setPhone(event.target.value)} />
-          {phoneError && <p style={{ color: 'red' }}>{phoneError}</p>}
+          {phoneError && <p style={{ color: 'red',fontStyle:'italic' }}>{phoneError}</p>}
         </div>
-          <button type="submit" className='button'>Sign Up</button>
-        {message && <p>{message}</p>}
+          <button type="submit" className='user-button'>Sign Up</button>
       </form>
     </div>
   );

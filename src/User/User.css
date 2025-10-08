@@ -4,44 +4,45 @@
     margin: 50px auto;
     padding: 40px;
     border: 1px solid #ccc;
-    border-radius: 58px;
+    border-radius: 48px;
 }
 
-.title {
+.user-title {
     text-align: center;
-    color: #6f6542;
+    color: #0f22b1;
+    font-size: 24;
+    font-style: italic;
 }
 
-.from {
+.user-from {
     margin-bottom: 1px;
     padding: 5px;
     border-radius: 800px;
+    font-style: italic;
 }
 
-.text-input {
-    width: 90%;
+.user-input {
+    width: 100%;
     padding: 5px;
-    color: black;
     border-radius: 6px;
     box-sizing: border-box;
     border: 1px solid #ccc;
+    font-style: italic;
 }
 
-.button {
+.user-button {
     background-color: darkslateblue;
     color: white;
-    padding: 5px 25px;
+    padding: 5px 55px;
     border-radius: 10px;
     display: block;
     margin: auto;
     cursor: pointer;
     font-size: 16px;
+    font-style: italic;
 }
 
-.hidden-password {
-    position: absolute;
-    right:510px;
-    top: 55%;
-    transform: translateY(-50%);
-    cursor: pointer;
+.user-label{
+    color:rgb(99, 83, 245);
+    font-style: italic;
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import './Task.css';
 
-
-const TaskUpdate = () => {
+export default function TaskUpdate() {
     const Id = useParams();
     const taskId = Id.id
     const [task, setTask] = useState(null);
@@ -11,19 +11,32 @@ const TaskUpdate = () => {
     const [formData, setFormData] = useState({ title: '', description: '', due_date: '', priority: '', status: '', tags: '' });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate(); 
-    
+    const token = localStorage.getItem('authToken');
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTask = async () => {
             try {
-                const response = await fetch(`http://localhost:3001/tasks/${taskId}`);
+                const response = await fetch(`http://localhost:3001/tasks/${taskId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const taskData = await response.json();
                 setTask(taskData);
-                setFormData({ title: taskData.title, description: taskData.description, due_date: taskData.due_date, priority: taskData.priority, status: taskData.status, tags: taskData.tags });
+                setFormData({
+                    title: taskData.title,
+                    description: taskData.description,
+                    due_date: taskData.due_date,
+                    Priority: taskData.priority,
+                    status: taskData.status,
+                    tags: Array.isArray(taskData.tags) ? taskData.tags.join(', ') : taskData.tags || ''
+                });
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -31,7 +44,7 @@ const TaskUpdate = () => {
             }
         };
         fetchTask();
-    }, [taskId]);
+    }, [taskId, token]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -43,25 +56,29 @@ const TaskUpdate = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const parsedTags = typeof formData.tags === 'string'
+            ? formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+            : formData.tags;
         setLoading(true);
         setError(null);
-
         try {
+            const updatedFormData = { ...formData, tags: parsedTags }; 
             const response = await fetch(`http://localhost:3001/tasks/${taskId}`, {
                 method: 'PATCH',
                 headers: {
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(updatedFormData),
             });
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.json();
+                throw new Error(errorData.message ||`HTTP error! status: ${response.status}`);
             }
-
             const updatedTask = await response.json();
             setTask(updatedTask);
-            setEditing(false);
             navigate('/task/list');
+            setEditing(false);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -69,16 +86,16 @@ const TaskUpdate = () => {
         }
     };
 
-    if (loading) return <div>Loading task profile...</div>;
+    if (loading) return <div>Loading task...</div>;
     if (error) return <div>Error: {error}</div>;
     if (!task) return <div>No task found.</div>;
     return (
         <div>
             {editing ? (
-                <form className='update-form' onSubmit={handleSubmit}>
-                    <h2 className='title'>Update Task!</h2>
+                <form className='update-task' onSubmit={handleSubmit}>
+                    <h2 className='update-title'>Update Task!</h2>
                     <div>
-                        <label>Title</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Title</label>
                         <input
                             type="text"
                             name="title"
@@ -87,7 +104,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div>
-                        <label>Description</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Description</label>
                         <input type="text"
                             name="description"
                             className='update-text-2'
@@ -95,7 +112,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <label>Due-Date</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Due_Date</label>
                         <input
                             type="text"
                             name="due_date"
@@ -104,16 +121,16 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div>
-                        <label>Priority</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Priority</label>
                         <input
                             type="text"
                             name="Priority"
                             className='update-text-4'
-                            value={formData.priority}
+                            value={formData.Priority}
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <label>Status</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Status</label>
                         <input
                             type="text"
                             name="status"
@@ -122,7 +139,7 @@ const TaskUpdate = () => {
                             onChange={handleChange} />
                     </div>
                     <div >
-                        <label>Tags:</label>
+                        <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Tags</label>
                         <input
                             type="text"
                             name="tags"
@@ -137,17 +154,16 @@ const TaskUpdate = () => {
                 </form>
             ) : (
                 <div className='task-edit'>
-                    <p><strong>Title:</strong> {task.title}</p>
-                    <p><strong>Description:</strong> {task.description}</p>
-                    <p><strong>Due_date:</strong> {task.due_date}</p>
-                    <p><strong>Status:</strong> {task.status}</p>
-                    <p><strong>Priority:</strong> {task.priority}</p>
-                    <p><strong>Tags:</strong> {task.tags}</p>
-                    <button className='button-update' onClick={() => setEditing(true)}>Edit</button>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Title:</strong> {task.title}</p>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Description:</strong> {task.description}</p>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Due_date:</strong> {task.due_date}</p>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Status:</strong> {task.status}</p>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Priority:</strong> {task.priority}</p>
+                    <p><strong style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Tags:</strong> {task.tags}</p>
+                    <button className='button-edit' onClick={() => setEditing(true)}>Edit</button>
                 </div>
             )}
         </div>
     );
 }
 
-export default TaskUpdate;

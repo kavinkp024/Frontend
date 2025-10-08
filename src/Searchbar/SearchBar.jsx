@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBar.css';
 
 export default function SearchName({ value, setValue, fetchname }) {
 

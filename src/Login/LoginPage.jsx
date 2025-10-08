@@ -17,11 +17,12 @@ function LoginPage() {
     try {
       const response = await axios.post('http://localhost:3001/auth/login', { email, password });
       const token = response.data;
-      localStorage.setItem('authToken', token);
-      navigate('/task/create');
+      localStorage.setItem('authToken', token.access_token);
+      localStorage.setItem('userId', token.decoded.id);
+      navigate('/dashboard');
     } catch (err) {
       setError('Invalid credentials');
-      console.error('Login error:', err);
+      console.error('Login error:', err); 
     }
      }
     else {
@@ -54,10 +55,10 @@ function LoginPage() {
 
   return (
     <div className='login'>
-      <h1 className='form-login'>LOGIN</h1>
+      <h1 className='form-login'>Login</h1>
       <form onSubmit={handleSubmit}>
         <div className='input-form'>
-          <label>Email*</label>
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Email<span style={{ color: 'red' }}>*</span></label>
           <input
             type="email"
             placeholder="Enter your email"
@@ -67,7 +68,7 @@ function LoginPage() {
             {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
         </div>
         <div className='input-form'>
-          <label>Password*</label>
+          <label style={{ fontSize: '22px', color: 'blue',fontFamily: 'Brush Script MT' }}>Password<span style={{ color: 'red' }}>*</span></label>
           <input
             type="text"
             placeholder="Enter your Password"
